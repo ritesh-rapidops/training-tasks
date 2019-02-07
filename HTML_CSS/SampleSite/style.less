@@ -1,0 +1,87 @@
+/* LESS Variables */
+	@screen-width:1840px;
+	@primary-color: #002171;
+	@bg-color: #e3f2fd;
+/* LESS Variables */
+
+/* LESS Mixins */
+	.borders-style-dotted{
+		border-color: #808080;
+		border-width: 5px;
+		-moz-border-width: 5px;
+		-webkit-border-width: 5px;
+		border-style: dotted;
+	}
+
+	.borders-thin{ 
+		border-color: #808080;
+		border-width: 1px;
+		-moz-border-width: 1px;
+		-webkit-border-width: 1px;
+		border-style: solid;
+	}
+
+	.borders-thick{
+		border-color: #808080;
+		border-width: 5px;
+		-moz-border-width: 5px;
+		-webkit-border-width: 5px;
+		border-style: ridge;
+	}
+
+	.spacing-zero{
+		padding: 0px;
+		margin: 0px;
+	}
+
+	.rounded-corners(@size: 10px){
+		border-radius: @size;
+		-moz-border-radius: @size;
+		-webkit-border-radius: @size;
+	}
+/* LESS Mixins */
+
+body{
+	background-color: darken(@bg-color, 5%);
+}
+
+/* LESS Nesting */
+	table{
+		.rounded-corners(5px);	
+		width: @screen-width/2;
+		.spacing-zero();
+		.borders-style-dotted();
+
+		td{
+			.borders-thin();
+			.rounded-corners();
+		}
+
+		th{
+			.rounded-corners();
+			.borders-thick();
+			color: @primary-color;
+		}
+
+		tfoot tr td{
+			.borders-thick();
+		}
+	}
+/* LESS Nesting */
+
+ul.list-type-square li{
+	list-style-type: square;
+}
+
+ul.list-type-disc li{
+	list-style-type: disc;
+}
+
+ol.list-upper-roman li{
+	list-style-type: upper-roman;
+}
+
+ol.list-lower-roman li{
+	list-style-type: lower-roman;
+}
+

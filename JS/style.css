@@ -1,0 +1,68 @@
+.inner-container{
+	margin: 100px; 
+	width: 130px;
+	border: 1px solid #808080;
+	border-radius: 5px;
+}
+.element{
+	background-color: #0d47a1;
+	color: #fff;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 5px;
+	width: 100px;
+}
+
+@keyframes push {
+  0%   {top:-100px; opacity: 0; background-color: #90caf9;}
+  25%  {top:-75px; opacity: 0.25; background-color: #42a5f5;}
+  50%  {top:-50px; opacity: 0.50; background-color: #1e88e5;}
+  75%  {top:-25px; opacity: 0.75; background-color: #1976d2;}
+  100% {top:0px; opacity: 1;}
+}
+
+@keyframes pop {
+  0%   {top:0px; opacity: 1; background-color: #1976d2;}
+  25%  {top:-25px; opacity: 0.75; background-color: #1e88e5;}
+  50%  {top:-50px; opacity: 0.50; background-color: #42a5f5;}
+  75%  {top:-75px; opacity: 0.25; background-color: #90caf9;}
+  100% {top:-100px; opacity: 0;}
+}
+
+@keyframes enqueue {
+  0%   {top:100px; opacity: 0; background-color: #90caf9;}
+  25%  {top:75px; opacity: 0.25; background-color: #42a5f5;}
+  50%  {top:50px; opacity: 0.50; background-color: #1e88e5;}
+  75%  {top:25px; opacity: 0.75; background-color: #1976d2;}
+  100% {top:0px; opacity: 1;}
+}
+
+@keyframes dequeue {
+  0%   {top:0px; opacity: 1; background-color: #1976d2;}
+  25%  {top:25px; opacity: 0.75; background-color: #1e88e5;}
+  50%  {top:50px; opacity: 0.50; background-color: #42a5f5;}
+  75%  {top:75px; opacity: 0.25; background-color: #90caf9;}
+  100% {top:100px; opacity: 0;}
+}
+
+.push-anim {
+  position: relative;
+  animation-name: push;
+  animation-duration: 0.5s;
+} 
+
+.pop-anim {
+  position: relative;
+  animation-name: pop;
+  animation-duration: 0.5s;
+} 
+.enqueue-anim {
+  position: relative;
+  animation-name: enqueue;
+  animation-duration: 0.5s;
+}
+.dequeue-anim {
+  position: relative;
+  animation-name: dequeue;
+  animation-duration: 0.5s;
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DOM Manipulation</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<div id="formDiv">
+		
+	</div>
+	<button id="btnSubmit" onclick="submitValues();">Submit</button>
+	<table id="table" border="1">
+	</table>
+	<script type="text/javascript">
+
+		totalObjs=1;
+		initialObject();
+
+		function initialObject() {
+			let initObj=getObject(1);
+			initObj.childNodes[3].remove();	
+			let formDiv=document.getElementById("formDiv");
+			formDiv.appendChild(initObj);
+		}
+
+		function getObject(numberOfObject) {
+
+			var groupElem=document.createElement("div");
+			groupElem.id="grp_"+numberOfObject;
+
+			var txtElem=document.createElement("input");
+			txtElem.type="text";
+			txtElem.id="txt_"+numberOfObject;
+			txtElem.placeholder="First Name";
+
+			var txtElem1=document.createElement("input");
+			txtElem1.type="text";
+			txtElem1.id="txtl_"+numberOfObject;
+			txtElem1.placeholder="Last Name";
+
+			var btnPlus=document.createElement("button");
+			btnPlus.class="plus_button";
+			btnPlus.id="btnPlus_"+numberOfObject;
+			btnPlus.setAttribute("onclick","addObject(this.id)");
+			btnPlus.innerText="+";
+
+			var btnMinus=document.createElement("button");
+			btnMinus.class="minus_button";
+			btnMinus.id="btnMinus_"+numberOfObject;
+			btnMinus.setAttribute("onclick","removeObject(this.id)");
+			btnMinus.innerText="-";
+
+			groupElem.appendChild(txtElem);
+			groupElem.appendChild(txtElem1);
+			groupElem.appendChild(btnPlus);
+			groupElem.appendChild(btnMinus);
+
+			return groupElem;
+		}
+		
+
+		function addObject(buttonId) {
+			let buttonElement=document.getElementById(buttonId);
+			let groupElement=buttonElement.parentNode;
+			groupElement.parentNode.insertBefore(getObject(++totalObjs),groupElement.nextSibling);
+			submitValues();
+		}
+
+		function removeObject(buttonId) {
+			let buttonElement=document.getElementById(buttonId);
+			let groupElement=buttonElement.parentNode;
+			groupElement.remove();
+			submitValues();
+		}
+
+		function submitValues() {
+			let formDiv=document.getElementById('formDiv');
+			let allGroups=formDiv.childNodes;
+			let formValues=[];
+			let tableElem=document.getElementById('table');
+			tableElem.innerHTML="";
+			for (var i = 1; i < allGroups.length; i++) {
+				let value1=(allGroups[i].childNodes[0].value === '')? "BLANK":allGroups[i].childNodes[0].value;
+				let value2=(allGroups[i].childNodes[1].value === '')? "BLANK":allGroups[i].childNodes[1].value;	
+				let trElem=document.createElement('tr');
+				tableElem.appendChild(trElem);
+				let tdElem=document.createElement('td');
+				let tdElem1=document.createElement('td');				
+				tdElem.innerText=value1;
+				tdElem1.innerText=value2;
+				trElem.appendChild(tdElem);
+				trElem.appendChild(tdElem1);
+			}
+		}
+		
+	</script>
+
+</body>
+</html>

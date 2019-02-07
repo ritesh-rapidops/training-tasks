@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Parsing</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+<script>
+
+function staticObjParse(obj) {
+	let arrKeys= Object.keys(obj);
+	for(let j=0; j<arrKeys.length; j++){
+		let innerKeys = Object.keys(obj[arrKeys[j]]);
+		let innerObj = {key: arrKeys[j]};
+		for (var k = 0; k < innerKeys.length; k++) {
+			innerObj[innerKeys[k]] = obj[arrKeys[j]][innerKeys[k]];
+		}		
+		objArr.push(innerObj);
+	}
+}
+
+const arr = [
+		1,
+		2,
+		"Ritesh",
+		{
+			"a":{
+				"b":function abc(a,b){return 0;},
+				"c": 10
+			},
+			"aa":{
+				"d":"Nothing",
+				"e":12,
+				"f":{
+					"f1":"123",
+					"f2":"456",
+					"f3": {
+						"ff4":{
+								"--f":999
+							},
+							"ff5": 234
+					}				
+				}					
+			},
+			"dfb":13
+		},
+		"Last Element",
+		10
+];
+
+let objArr = [];
+let stack = [];
+let tmpStack = [];
+
+function objParse(obj) {
+	let arrKeys= Object.keys(obj);
+	for(let j=0; j<arrKeys.length; j++){
+		if(typeof(obj[arrKeys[j]])==="object"){	
+			let tmpObj={key: arrKeys[j] };
+			stack.push(tmpObj);
+			objParse(obj[arrKeys[j]]);									
+		}else{
+			if(stack.length>0){
+				let stkObj=stack.pop();
+				stkObj[arrKeys[j]]=obj[arrKeys[j]];
+				stack.push(stkObj);
+			}
+		}
+	}	
+	while(stack.length>1){
+		tmpStack.push(stack.pop());
+	}
+	let obj1=stack.pop();
+	if(obj1!=undefined){
+		objArr.push(obj1);
+	}
+	while(tmpStack.length>0){
+		stack.push(tmpStack.pop());
+	}
+	
+	tmpObj={};
+}
+
+let arrKeys= Object.keys(arr);
+for(let i=0; i<arr.length; i++){
+	if(typeof(arr[i]) === "number"){
+		objArr.push({key: i, cont: i+arr[i] });	
+	}else if(typeof(arr[i]) === "string"){
+		objArr.push({key: arr[i], cont: arr[i] });
+	}else if(typeof(arr[i]) === "object"){
+		objParse(arr[i]);
+	}	
+}
+
+console.log(objArr);
+document.write(JSON.stringify(objArr));
+
+
+</script>
+</body>
+</html>

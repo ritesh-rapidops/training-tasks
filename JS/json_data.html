@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JSON Data</title>
+	<meta charset="utf-8">
+</head>
+<body>
+
+
+<script type="text/javascript">
+	let shopData = [
+		{ShopID: 1, Name: 'ABCD', Products:[1,2,3,4,5]},
+		{ShopID: 2, Name: 'BCDE', Products:[1,2,3,4,5]},
+		{ShopID: 3, Name: 'CDEF', Products:[1,2,3,4,5]},
+		{ShopID: 4, Name: 'DEFG', Products:[1,2,3,4,5]},
+		{ShopID: 5, Name: 'EFGH', Products:[1,2,3,4,5]}
+	];
+	let productsData = [
+		{ProductID: 1, Name: 'Pro1', price: 10},
+		{ProductID: 2, Name: 'Pro2', price: 20},
+		{ProductID: 3, Name: 'Pro3', price: 30},
+		{ProductID: 4, Name: 'Pro4', price: 40},
+		{ProductID: 5, Name: 'Pro5', price: 50}
+	];
+
+	let urlParams = new URLSearchParams(window.location.search);
+	if (urlParams.get('data') != null) {
+		if (urlParams.get('data') === `shops`) {
+			document.write(JSON.stringify(shopData));
+		}else if(urlParams.get('data') === `products`){
+			document.write(JSON.stringify(productsData));
+		}
+	}
+	
+</script>
+</body>
+</html>

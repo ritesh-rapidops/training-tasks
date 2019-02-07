@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>DOM Stack and Queue</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+	<div class="outer-div">
+		<input type="text" id="txtInput" name="txtInput">
+		<button onclick="pushElement(txtInput.value);">Push</button>
+		<button onclick="popElement();">Pop</button>
+		<button onclick="enqueueElement(txtInput.value);">En-Queue</button>
+		<button onclick="dequeueElement();">De-Queue</button>
+		<div class="inner-container">
+			<div id="firstElement" class="element" hidden="hidden">NULL</div>
+			<div id="lastElement" class="element" hidden="hidden">NULL</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="./DOM_Operations.js"></script>
+</body>
+</html>
