@@ -3,7 +3,7 @@ class Subject {
     this._observers = [];
   }
 
-  subscribe(observer) {
+  subscribe(observer) {                                                                                                                                                  
     this._observers.push(observer);
   }
 
