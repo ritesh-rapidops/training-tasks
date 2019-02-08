@@ -23,3 +23,4 @@ There are two tasks
   4. A Script consist of practice of OOP concepts in JavaScript.
   5. Practice of Promise, Async/Await
   6. A Script to convert CSV to JSON.(also used some functions of lodash library)
+  7. Design Pattern Practicals
