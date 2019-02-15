@@ -31,7 +31,7 @@ new Promise((resolve, reject) => {
 		}).then((data) => {
 			// Priting a user data on to the console
 			console.log(data);
-		});
+		}).catch(err => { console.log(err); });
 	}
 
 }).catch(err => { console.log(err); });
